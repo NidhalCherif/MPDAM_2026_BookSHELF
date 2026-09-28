@@ -1,5 +1,5 @@
 import React from 'react'
-
+import BookStatus from './BookStatus'
 const BooksList = ({books,onDelete, onToogleReadStatus}) => {
   return (
     <div>
@@ -7,7 +7,7 @@ const BooksList = ({books,onDelete, onToogleReadStatus}) => {
     <table className="table">      <thead>
     <tr className='table-primary'>
       <th>Titre</th>
-      <th>Etat</th>
+      <th>Etat et Note</th>
       <th>Action</th>
     </tr>
     </thead>
@@ -18,11 +18,15 @@ const BooksList = ({books,onDelete, onToogleReadStatus}) => {
        <tr key={book.id}>
         <td>{book.titre}</td>
         <td>
-            <button className={book.read?'btn btn-success btn-sm':'btn btn-secondary btn-sm'}
-            onClick={()=>onToogleReadStatus(book.id)}>{book.read?'Lu':'A lire'}</button>
+          <BookStatus read={book.read}
+                      rating={book.rating}
+              />  
         </td>
         <td>
-          <button className='btn btn-secondary btn-sm'
+            <button className='btn btn-primary btn-sm'
+            onClick={()=>onToogleReadStatus(book.id)}>
+                Changer Satut</button>
+          <button className='m-2 btn btn-secondary btn-sm'
               onClick={()=>onDelete(book.id)}>
           ❌</button> 
         </td>
