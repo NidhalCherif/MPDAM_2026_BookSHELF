@@ -1,4 +1,6 @@
 import { useState } from "react";
+import BooksCounter from "./components/BooksCounter";
+import BooksList from "./components/BooksList";
 function App() {
             //1 données
             const[books, setBooks] =useState([{id:1,titre:'React',read:false,rating:4},
@@ -34,45 +36,19 @@ return(
     <h1>BookShelf Manager</h1>
     <div className="row">
 <div className="my-3 col-12 col-md-4">
-  
-      <h3>Tableau de Bord</h3>
-      <ul>
-        <li>Total Books :{totalBooks}</li>
-        <li>Livres Lus :{totalBooksLus}</li>
-        <li>Livres A lire: {totalBooksNonLus} </li>
-      </ul>
+  <BooksCounter  total={totalBooks}
+              totalLus={totalBooksLus}
+              totalNonLus={totalBooksNonLus} />
+             
+      
 </div>
 
     <div className="my-3 col-12 col-md-8">
-      <h3>Ma Bibliothèque</h3>
-    <table className="table">      <thead>
-    <tr className='table-primary'>
-      <th>Titre</th>
-      <th>Etat</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    {books.map((book)=>( 
+      <BooksList books={books} 
+                 onDelete={handleDelete}
+                 onToogleReadStatus={toogleReadStatus}
+                  />
       
-       <tr key={book.id}>
-        <td>{book.titre}</td>
-        <td>
-            <button className={book.read?'btn btn-success btn-sm':'btn btn-secondary btn-sm'}
-            onClick={()=>toogleReadStatus(book.id)}>{book.read?'Lu':'A lire'}</button>
-        </td>
-        <td>
-          <button className='btn btn-secondary btn-sm'
-              onClick={()=>handleDelete(book.id)}>
-          ❌</button> 
-        </td>
-        
-      </tr>
-
-    ))}
-</tbody>
-   </table>
     </div>
 
   </div>
