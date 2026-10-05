@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BooksCounter from "./components/BooksCounter";
 import BooksList from "./components/BooksList";
+import AddBookForm from "./components/AddBookForm";
 function App() {
             //1 données
             const[books, setBooks] =useState([{id:1,titre:'React',read:false,rating:4},
@@ -39,6 +40,7 @@ return(
   <BooksCounter  total={totalBooks}
               totalLus={totalBooksLus}
               totalNonLus={totalBooksNonLus} />
+  <AddBookForm />
              
       
 </div>
