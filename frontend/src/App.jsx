@@ -25,6 +25,11 @@ function App() {
                  //2Modifier la copie du state avec setter
                    setBooks(booksUpdated);
              }
+const addBook = (Book) => { 
+  const newBook={id:Date.now(),...Book};
+  setBooks([...books,newBook]);
+ }
+
              const totalBooks=books.length;
              const totalBooksLus=books.filter((book)=>book.read).length;
              const totalBooksNonLus=totalBooks-totalBooksLus;
@@ -40,7 +45,7 @@ return(
   <BooksCounter  total={totalBooks}
               totalLus={totalBooksLus}
               totalNonLus={totalBooksNonLus} />
-  <AddBookForm />
+  <AddBookForm  onAddBook={addBook}/>
              
       
 </div>
