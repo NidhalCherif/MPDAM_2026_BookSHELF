@@ -7,7 +7,7 @@ const Navbar = () => {
             <Link className="navbar-brand" to='/'> 📚BookShelf</Link>
             <div className="navbar-nav ms-auto">
                <NavLink className='nav-link' to="/">Accueil</NavLink>
-               <NavLink className='nav-link'to="/books">Livres</NavLink>
+               <NavLink className='nav-link'to="/books" end>Livres</NavLink>
                <NavLink className='nav-link' to="/books/new">Ajouter</NavLink> 
             </div>
         </div>

@@ -1,8 +1,13 @@
-import React from 'react'
 
-const BooksPage = () => {
+import BooksList from '../components/BooksList'
+
+const BooksPage = ({books,onDelete, onToogleReadStatus}) => {
   return (
-    <div>BooksPage</div>
+    <div>
+       <BooksList books={books}
+                   onDelete={onDelete}
+                    onToogleReadStatus ={onToogleReadStatus} />
+    </div>
   )
 }
 
